@@ -1,0 +1,36 @@
+############################################
+# Sensor:  Microphone                             #
+# Version: 22092015                        #
+# Posture: lying                         #
+############################################
+
+Microphone_lying_chest.csv
+> entries: 854
+> frequency: 1.36 Hz
+> duration: 629024 ms / 10.48 min
+
+Microphone_lying_head.csv
+> entries: 849
+> frequency: 1.35 Hz
+> duration: 629395 ms / 10.49 min
+
+Microphone_lying_shin.csv
+> entries: 848
+> frequency: 1.35 Hz
+> duration: 629256 ms / 10.49 min
+
+Microphone_lying_thigh.csv
+> entries: 843
+> frequency: 1.34 Hz
+> duration: 629067 ms / 10.48 min
+
+Microphone_lying_upperarm.csv
+> entries: 852
+> frequency: 1.35 Hz
+> duration: 629850 ms / 10.50 min
+
+Microphone_lying_waist.csv
+> entries: 848
+> frequency: 1.35 Hz
+> duration: 629240 ms / 10.49 min
+

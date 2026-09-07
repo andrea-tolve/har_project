@@ -1,0 +1,36 @@
+############################################
+# Sensor:  Microphone                             #
+# Version: 23092015                        #
+# Posture: sitting                         #
+############################################
+
+Microphone_sitting_chest.csv
+> entries: 860
+> frequency: 1.37 Hz
+> duration: 625506 ms / 10.43 min
+
+Microphone_sitting_head.csv
+> entries: 1285
+> frequency: 2.05 Hz
+> duration: 625793 ms / 10.43 min
+
+Microphone_sitting_shin.csv
+> entries: 855
+> frequency: 1.37 Hz
+> duration: 625599 ms / 10.43 min
+
+Microphone_sitting_thigh.csv
+> entries: 848
+> frequency: 1.36 Hz
+> duration: 625047 ms / 10.42 min
+
+Microphone_sitting_upperarm.csv
+> entries: 856
+> frequency: 1.37 Hz
+> duration: 625881 ms / 10.43 min
+
+Microphone_sitting_waist.csv
+> entries: 848
+> frequency: 1.36 Hz
+> duration: 624791 ms / 10.41 min
+

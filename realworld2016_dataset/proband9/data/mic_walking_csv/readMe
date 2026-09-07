@@ -1,0 +1,36 @@
+############################################
+# Sensor:  Microphone                             #
+# Version: 22092015                        #
+# Posture: walking                         #
+############################################
+
+Microphone_walking_chest.csv
+> entries: 855
+> frequency: 1.36 Hz
+> duration: 628080 ms / 10.47 min
+
+Microphone_walking_head.csv
+> entries: 856
+> frequency: 1.36 Hz
+> duration: 627857 ms / 10.46 min
+
+Microphone_walking_shin.csv
+> entries: 1304
+> frequency: 2.08 Hz
+> duration: 628081 ms / 10.47 min
+
+Microphone_walking_thigh.csv
+> entries: 855
+> frequency: 1.36 Hz
+> duration: 627750 ms / 10.46 min
+
+Microphone_walking_upperarm.csv
+> entries: 857
+> frequency: 1.37 Hz
+> duration: 627592 ms / 10.46 min
+
+Microphone_walking_waist.csv
+> entries: 852
+> frequency: 1.36 Hz
+> duration: 628193 ms / 10.47 min
+

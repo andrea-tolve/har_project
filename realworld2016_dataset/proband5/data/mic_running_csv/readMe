@@ -1,0 +1,36 @@
+############################################
+# Sensor:  Microphone                             #
+# Version: 23092015                        #
+# Posture: running                         #
+############################################
+
+Microphone_running_chest.csv
+> entries: 2343
+> frequency: 2.10 Hz
+> duration: 1113699 ms / 18.56 min
+
+Microphone_running_head.csv
+> entries: 1513
+> frequency: 1.36 Hz
+> duration: 1112993 ms / 18.55 min
+
+Microphone_running_shin.csv
+> entries: 1529
+> frequency: 1.37 Hz
+> duration: 1113164 ms / 18.55 min
+
+Microphone_running_thigh.csv
+> entries: 1513
+> frequency: 1.36 Hz
+> duration: 1113387 ms / 18.56 min
+
+Microphone_running_upperarm.csv
+> entries: 1520
+> frequency: 1.37 Hz
+> duration: 1113053 ms / 18.55 min
+
+Microphone_running_waist.csv
+> entries: 1507
+> frequency: 1.35 Hz
+> duration: 1113230 ms / 18.55 min
+
