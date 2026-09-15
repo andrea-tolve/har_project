@@ -34,17 +34,21 @@ ACTIVITIES = [
 WINDOW_SIZE = 150
 STRIDE = 75
 N_DATASETS = 15
+GPS_TOLERANCE = 30000
+
+MIC_FREQUENCY = 1.5
+WINDOW_DURATION_SECONDS = WINDOW_SIZE / 50
+EXPECTED_MIC_SAMPLES = (
+    MIC_FREQUENCY * WINDOW_DURATION_SECONDS
+)
 
 
 OUTPUT_DIR = Path(
-    "./dataset_with_context/dataset_with_light/features_with_light/"
+    "./dataset_with_context/dataset_all/features_with_all_sensors/"
 )
 OUTPUT_DIR.mkdir(exist_ok=True, parents=True)
 
 
-# ============================================================
-# DATAFRAME
-# ============================================================
 
 def build_dataframe(
     file_path,
@@ -91,11 +95,62 @@ def build_dataframe(
     )
 
     return df
+    
+def build_gps_dataframes(gps_path):
 
+    gps_dataframes = {}
 
-# ============================================================
-# SENSOR DATAFRAME
-# ============================================================
+    files = sorted(
+        os.listdir(gps_path)
+    )
+
+    for body_part, filename in zip(
+        CONTEXT_BODY_PARTS,
+        files
+    ):
+
+        file_path = os.path.join(
+            gps_path,
+            filename
+        )
+
+        df = build_dataframe(
+            file_path,
+            body_part,
+            "gps",
+            keep_timestamp=True
+        )
+
+        df = df.rename(
+            columns={
+                "timestamp": "timestamp",
+                f"{body_part}_gps_lat": "lat",
+                f"{body_part}_gps_lng": "lng"
+            }
+        )
+
+        df = calculate_gps_features(df)
+
+        df.rename(
+            columns={
+                "lat":
+                    f"{body_part}_gps_lat",
+
+                "lng":
+                    f"{body_part}_gps_lng",
+
+                "speed_mps":
+                    f"{body_part}_gps_speed_mps",
+
+                "gps_available":
+                    f"{body_part}_gps_available"
+            },
+            inplace=True
+        )
+
+        gps_dataframes[body_part] = df
+
+    return gps_dataframes
 
 def build_sensor_dataframe(
     sensor_path,
@@ -103,12 +158,18 @@ def build_sensor_dataframe(
 ):
     sensor_df = None
 
-    files = sorted(os.listdir(sensor_path))
+    files = sorted(
+        os.listdir(sensor_path)
+    )
 
-    for body_part, filename in zip(
-        BODY_PARTS if sensor == "acc" or sensor == "gyr" or sensor == "mag"
-        else CONTEXT_BODY_PARTS,
-        files
+    body_parts = (
+        BODY_PARTS
+        if sensor in ["acc", "gyr", "mag"]
+        else CONTEXT_BODY_PARTS
+    )
+
+    for index, (body_part, filename) in enumerate(
+        zip(body_parts, files)
     ):
 
         file_path = os.path.join(
@@ -119,7 +180,11 @@ def build_sensor_dataframe(
         df = build_dataframe(
             file_path,
             body_part,
-            sensor
+            sensor,
+            keep_timestamp=(
+                sensor == "acc"
+                and index == 0
+            )
         )
 
         if sensor_df is None:
@@ -135,11 +200,76 @@ def build_sensor_dataframe(
             )
 
     return sensor_df
+    
 
 
-# ============================================================
-# ACTIVITY DATAFRAME
-# ============================================================
+def build_mic_dataframe(
+    sensor_path
+):
+
+    mic_data = []
+
+    files = sorted(
+        os.listdir(sensor_path)
+    )
+
+    for body_part, filename in zip(
+        CONTEXT_BODY_PARTS,
+        files
+    ):
+
+        file_path = os.path.join(
+            sensor_path,
+            filename
+        )
+
+        df = pd.read_csv(
+            file_path
+        )
+
+        df = df[
+            [
+                "attr_time",
+                "attr_db"
+            ]
+        ].copy()
+
+        df["attr_time"] = pd.to_numeric(
+            df["attr_time"],
+            errors="coerce"
+        )
+
+        df["attr_db"] = pd.to_numeric(
+            df["attr_db"],
+            errors="coerce"
+        )
+
+        df = df.dropna(
+            subset=["attr_time"]
+        )
+
+        df = df.sort_values(
+            "attr_time"
+        )
+
+        df = df.rename(
+            columns={
+                "attr_time": "timestamp",
+                "attr_db": f"{body_part}_mic_db"
+            }
+        )
+
+        mic_data.append(
+            df[
+                [
+                    "timestamp",
+                    f"{body_part}_mic_db"
+                ]
+            ]
+        )
+
+    return mic_data
+
 
 def build_activity_dataframe(
     activity_path,
@@ -172,22 +302,39 @@ def build_activity_dataframe(
         elif "mag" in sensor_folder_lower:
             sensor = "mag"
 
-        elif "lig" in sensor_folder_lower:
+        elif "mic" in sensor_folder_lower:
+            sensor = "mic"
+            
+        elif "lig" in sensor_folder_lower: 
             sensor = "lig"
+            
+        elif "gps" in sensor_folder_lower:
+            sensor = "gps"
 
         else:
             continue
 
-        sensor_dataframes[sensor] = (
-            build_sensor_dataframe(
-                sensor_path,
-                sensor
+        if sensor == "mic":
+            sensor_dataframes[sensor] = (
+                build_mic_dataframe(
+                    sensor_path
+                )
             )
-        )
+        elif sensor == "gps":
+            sensor_dataframes["gps"] = (
+                build_gps_dataframes(
+                    sensor_path
+                )
+            )
 
-    # ========================================================
-    # BASELINE
-    # ========================================================
+        else:
+
+            sensor_dataframes[sensor] = (
+                build_sensor_dataframe(
+                    sensor_path,
+                    sensor
+                )
+            )
 
     activity_df = sensor_dataframes["acc"]
 
@@ -203,30 +350,56 @@ def build_activity_dataframe(
         how="inner"
     )
 
-    # ========================================================
-    # LIGHT
-    # ========================================================
+    activity_df["timestamp"] = pd.to_numeric(
+        activity_df["timestamp"],
+        errors="coerce"
+    )
+    
+    if "gps" in sensor_dataframes:
 
-    if "lig" in sensor_dataframes:
+        activity_df = activity_df.sort_values(
+            "timestamp"
+        ).reset_index(drop=True)
 
-        activity_df = activity_df.merge(
-            sensor_dataframes["lig"],
-            on="id",
-            how="inner"
-        )
+        for body_part, gps_df in (
+            sensor_dataframes["gps"].items()
+        ):
+
+            gps_df = gps_df[
+                [
+                    "timestamp",
+                    f"{body_part}_gps_lat",
+                    f"{body_part}_gps_lng",
+                    f"{body_part}_gps_speed_mps",
+                    f"{body_part}_gps_available"
+                ]
+            ].copy()
+
+            gps_df = gps_df.sort_values(
+                "timestamp"
+            )
+
+            activity_df = pd.merge_asof(
+                activity_df,
+                gps_df,
+                on="timestamp",
+                direction="backward",
+                tolerance=GPS_TOLERANCE
+            )
+
+    if "lig" in sensor_dataframes: 
+        activity_df = activity_df.merge(sensor_dataframes["lig"], on="id", how="inner" )
 
     activity_df["activity"] = activity_name
 
-    return activity_df
+    return activity_df, sensor_dataframes.get("mic")
 
-
-# ============================================================
-# BUILD DATASET
-# ============================================================
-
-def build_dataset(subject_folder):
+def build_dataset(
+    subject_folder
+):
 
     dataset = []
+    mic_data = {}
 
     activity_folders = sorted(
         os.listdir(subject_folder)
@@ -247,12 +420,22 @@ def build_dataset(subject_folder):
             f"{activity_folder}"
         )
 
-        activity_df = build_activity_dataframe(
-            activity_path,
-            activity_folder
+        activity_df, activity_mic = (
+            build_activity_dataframe(
+                activity_path,
+                activity_folder
+            )
         )
 
-        dataset.append(activity_df)
+        dataset.append(
+            activity_df
+        )
+
+        if activity_mic is not None:
+
+            mic_data[
+                activity_folder
+            ] = activity_mic
 
     dataset = pd.concat(
         dataset,
@@ -270,12 +453,8 @@ def build_dataset(subject_folder):
 
     dataset = dataset[columns]
 
-    return dataset
+    return dataset, mic_data
 
-
-# ============================================================
-# FEATURE EXTRACTION
-# ============================================================
 
 def extract_standard_features(
     window,
@@ -314,7 +493,160 @@ def extract_standard_features(
         )
 
     return features
+    
+def extract_gps_features(
+    window,
+    body_parts
+):
 
+    features = {}
+
+    lat_values = []
+    lng_values = []
+    speed_values = []
+    speed_max_values = []
+    availability_values = []
+
+    for body_part in body_parts:
+
+        lat = (
+            window[
+                f"{body_part}_gps_lat"
+            ]
+            .dropna()
+        )
+
+        lng = (
+            window[
+                f"{body_part}_gps_lng"
+            ]
+            .dropna()
+        )
+
+        speed = (
+            window[
+                f"{body_part}_gps_speed_mps"
+            ]
+            .dropna()
+        )
+
+        availability = (
+            window[
+                f"{body_part}_gps_available"
+            ]
+            .fillna(0)
+        )
+
+        if len(lat) > 0:
+            lat_values.append(lat.iloc[-1])
+
+        if len(lng) > 0:
+            lng_values.append(lng.iloc[-1])
+
+        if len(speed) > 0:
+            speed_values.extend(speed.tolist())
+
+        if len(speed) > 0:
+            speed_max_values.append(speed.max())
+
+        availability_values.append(
+            availability.mean()
+        )
+
+    features["gps_lat"] = (
+        np.mean(lat_values)
+        if lat_values
+        else np.nan
+    )
+
+    features["gps_lng"] = (
+        np.mean(lng_values)
+        if lng_values
+        else np.nan
+    )
+
+    features["gps_speed_mean"] = (
+        np.mean(speed_values)
+        if speed_values
+        else np.nan
+    )
+
+    features["gps_speed_max"] = (
+        np.max(speed_max_values)
+        if speed_max_values
+        else np.nan
+    )
+
+    features["gps_availability"] = (
+        np.mean(availability_values)
+        if availability_values
+        else 0
+    )
+
+    return features
+
+
+def calculate_gps_features(df):
+
+    df = df.copy()
+
+    df["timestamp"] = pd.to_numeric(
+        df["timestamp"],
+        errors="coerce"
+    )
+
+    df["lat"] = pd.to_numeric(
+        df["lat"],
+        errors="coerce"
+    )
+
+    df["lng"] = pd.to_numeric(
+        df["lng"],
+        errors="coerce"
+    )
+
+    df = df.dropna(
+        subset=["timestamp", "lat", "lng"]
+    )
+
+    df = df.sort_values(
+        "timestamp"
+    ).reset_index(drop=True)
+
+    dt = (
+        df["timestamp"].diff()
+        / 1000.0
+    )
+
+    lat1 = np.radians(df["lat"].shift(1))
+    lat2 = np.radians(df["lat"])
+
+    lon1 = np.radians(df["lng"].shift(1))
+    lon2 = np.radians(df["lng"])
+
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+
+    a = (
+        np.sin(dlat / 2) ** 2
+        +
+        np.cos(lat1)
+        * np.cos(lat2)
+        * np.sin(dlon / 2) ** 2
+    )
+
+    distance = (
+        2
+        * 6371000
+        * np.arcsin(
+            np.sqrt(a)
+        )
+    )
+
+    df["speed_mps"] = distance / dt
+    df["gps_available"] = 1
+
+    return df
 
 def extract_light_features(
     window,
@@ -382,16 +714,102 @@ def extract_light_features(
 
     return features
 
+def extract_mic_features(
+    window_start,
+    window_end,
+    mic_data
+):
 
-# ============================================================
-# PROCESS DATASET
-# ============================================================
+    mean_values = []
+    std_values = []
+    min_values = []
+    max_values = []
+    availability_values = []
 
-def process_dataset(dataset_id):
+    for body_part, mic_df in zip(
+        CONTEXT_BODY_PARTS,
+        mic_data
+    ):
+
+        column = f"{body_part}_mic_db"
+
+        mic_window = mic_df[
+            (mic_df["timestamp"] >= window_start)
+            & (mic_df["timestamp"] <= window_end)
+        ][column].dropna()
+
+        n_samples = len(mic_window)
+
+        availability = min(
+            n_samples / EXPECTED_MIC_SAMPLES,
+            1.0
+        )
+
+        availability_values.append(
+            availability
+        )
+
+        if n_samples == 0:
+            continue
+
+        mean_values.append(
+            mic_window.mean()
+        )
+
+        std_values.append(
+            mic_window.std(ddof=0)
+        )
+
+        min_values.append(
+            mic_window.min()
+        )
+
+        max_values.append(
+            mic_window.max()
+        )
+
+    features = {}
+
+    features["mic_db_mean"] = (
+        np.mean(mean_values)
+        if mean_values
+        else np.nan
+    )
+
+    features["mic_db_std"] = (
+        np.mean(std_values)
+        if std_values
+        else np.nan
+    )
+
+    features["mic_db_min"] = (
+        np.min(min_values)
+        if min_values
+        else np.nan
+    )
+
+    features["mic_db_max"] = (
+        np.max(max_values)
+        if max_values
+        else np.nan
+    )
+
+    features["mic_availability"] = (
+        np.mean(availability_values)
+        if availability_values
+        else 0.0
+    )
+
+    return features
+
+def process_dataset(
+    dataset_id,
+    mic_data
+):
 
     input_path = (
         f"./dataset_with_context/"
-        f"dataset_with_light/"
+        f"dataset_all/"
         f"dataset{dataset_id}.csv"
     )
 
@@ -399,19 +817,24 @@ def process_dataset(dataset_id):
         f"Processing {input_path}..."
     )
 
-    df = pd.read_csv(input_path)
+    df = pd.read_csv(
+        input_path
+    )
 
     standard_columns = [
         col
         for col in df.columns
         if "_lig_" not in col
-        and col not in ["id", "activity"]
+        and "_gps_" not in col
+        and col not in ["id", "activity", "timestamp"]
     ]
-
-    light_body_parts = [
+    
+    light_body_parts = [ body_part for body_part in CONTEXT_BODY_PARTS if f"{body_part}_lig_light" in df.columns ]
+    
+    gps_body_parts = [
         body_part
         for body_part in CONTEXT_BODY_PARTS
-        if f"{body_part}_lig_light" in df.columns
+        if f"{body_part}_gps_lat" in df.columns
     ]
 
     all_features = []
@@ -421,6 +844,10 @@ def process_dataset(dataset_id):
         activity_data = df[
             df["activity"] == activity
         ].reset_index(drop=True)
+
+        activity_mic = mic_data.get(
+            activity
+        )
 
         for start in range(
             0,
@@ -432,21 +859,45 @@ def process_dataset(dataset_id):
                 start:start + WINDOW_SIZE
             ]
 
-            window_features = extract_standard_features(
-                window,
-                standard_columns
+            window_start = (
+                window["timestamp"].iloc[0]
             )
 
-            if light_body_parts:
+            window_end = (
+                window["timestamp"].iloc[-1]
+            )
+
+            window_features = (
+                extract_standard_features(
+                    window,
+                    standard_columns
+                )
+            )
+            if gps_body_parts:
 
                 window_features.update(
-                    extract_light_features(
+                    extract_gps_features(
                         window,
-                        light_body_parts
+                        gps_body_parts
                     )
                 )
 
-            window_features["activity"] = activity
+            if light_body_parts: 
+                window_features.update(extract_light_features(window, light_body_parts))
+
+
+            if activity_mic is not None:
+                window_features.update(
+                    extract_mic_features(
+                        window_start,
+                        window_end,
+                        activity_mic
+                    )
+                )
+
+            window_features["activity"] = (
+                activity
+            )
 
             window_features["window_start"] = (
                 window["id"].iloc[0]
@@ -491,7 +942,8 @@ def process_dataset(dataset_id):
     )
 
     print(
-        f"  Original samples: {len(df)}"
+        f"  Original samples: "
+        f"{len(df)}"
     )
 
     print(
@@ -505,20 +957,16 @@ def process_dataset(dataset_id):
     )
 
     print(
-        f"  Saved to: {output_path}"
+        f"  Saved to: "
+        f"{output_path}"
     )
 
     return features_df
 
 
-# ============================================================
-# MAIN
-# ============================================================
-
 if __name__ == "__main__":
 
-    for i in range(2, 16):
-
+    for i in range(1, 16):
         print(
             f"\nProcessing subject {i}..."
         )
@@ -528,14 +976,22 @@ if __name__ == "__main__":
             f"proband{i}/baseline"
         )
 
-        dataset = build_dataset(
+        dataset, mic_data = build_dataset(
             subject_folder
         )
 
         output_path = (
             f"./dataset_with_context/"
-            f"dataset_with_light/"
+            f"dataset_all/"
             f"dataset{i}.csv"
+        )
+
+        Path(
+            "./dataset_with_context/"
+            "dataset_all/"
+        ).mkdir(
+            exist_ok=True,
+            parents=True
         )
 
         dataset.to_csv(
@@ -546,7 +1002,11 @@ if __name__ == "__main__":
         feature_cols = [
             c
             for c in dataset.columns
-            if c not in ["id", "activity"]
+            if c not in [
+                "id",
+                "activity",
+                "timestamp"
+            ]
         ]
 
         print(
@@ -555,7 +1015,11 @@ if __name__ == "__main__":
         )
 
         print(
-            f"Dataset saved: {output_path}"
+            f"Dataset saved: "
+            f"{output_path}"
         )
 
-        process_dataset(i)
+        process_dataset(
+            i,
+            mic_data
+        )
