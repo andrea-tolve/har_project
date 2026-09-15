@@ -1,0 +1,2 @@
+fold,model,accuracy,precision_macro,recall_macro,f1_macro,precision_lying,recall_lying,f1_lying,precision_running,recall_running,f1_running,precision_sitting,recall_sitting,f1_sitting,precision_standing,recall_standing,f1_standing,precision_walking,recall_walking,f1_walking
+2,XGBoost,0.5069044879171462,0.42112708863904585,0.5794289363254881,0.4300375322995717,0.0,0.0,0.0,0.11298838437170011,0.9907407407407407,0.2028436018957346,0.0,0.0,0.0,1.0,0.9088669950738916,0.952258064516129,0.9926470588235294,0.9975369458128078,0.995085995085995

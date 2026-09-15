@@ -1,0 +1,2 @@
+fold,model,accuracy,precision_macro,recall_macro,f1_macro,precision_lying,recall_lying,f1_lying,precision_running,recall_running,f1_running,precision_sitting,recall_sitting,f1_sitting,precision_standing,recall_standing,f1_standing,precision_walking,recall_walking,f1_walking
+9,RandomForest,0.7780772686433064,0.7853316326530612,0.7825106575884085,0.760708891863467,1.0,0.9927884615384616,0.9963811821471653,1.0,0.7245841035120147,0.8403001071811361,0.5471938775510204,1.0,0.7073371805441055,0.3794642857142857,0.2,0.26194144838212635,1.0,0.9951807228915662,0.9975845410628019

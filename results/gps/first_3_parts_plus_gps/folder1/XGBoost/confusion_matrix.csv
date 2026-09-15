@@ -1,0 +1,6 @@
+,lying,running,sitting,standing,walking
+lying,414,0,0,1,0
+running,0,403,0,1,0
+sitting,0,5,419,11,1
+standing,0,0,130,282,12
+walking,0,1,0,3,418

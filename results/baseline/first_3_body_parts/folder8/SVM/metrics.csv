@@ -1,0 +1,2 @@
+fold,model,accuracy,precision_macro,recall_macro,f1_macro,precision_lying,recall_lying,f1_lying,precision_running,recall_running,f1_running,precision_sitting,recall_sitting,f1_sitting,precision_standing,recall_standing,f1_standing,precision_walking,recall_walking,f1_walking
+8,SVM,0.3319169027384325,0.35048419717537366,0.33992814878797584,0.2507861376505238,0.17571644042232276,0.5574162679425837,0.2672018348623853,0.5767045454545454,0.9950980392156863,0.7302158273381295,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.1471264367816092,0.2565130260521042
