@@ -1,0 +1,22 @@
+body_part,model,macro_f1_mean,model_label,rank_within_model
+forearm,random_forest,0.8061700386859427,Random Forest,1
+shin,random_forest,0.7674855518212964,Random Forest,2
+upperarm,random_forest,0.7255111747163693,Random Forest,3
+waist,random_forest,0.7062719619362794,Random Forest,4
+head,random_forest,0.6932023176288078,Random Forest,5
+chest,random_forest,0.6912001987630754,Random Forest,6
+thigh,random_forest,0.6730502210221231,Random Forest,7
+forearm,svm,0.8195835306055058,SVM,1
+shin,svm,0.7558751066736671,SVM,2
+waist,svm,0.7318135756893824,SVM,3
+upperarm,svm,0.7184422634225888,SVM,4
+chest,svm,0.7115827429561761,SVM,5
+thigh,svm,0.6737373101409522,SVM,6
+head,svm,0.6574487159934134,SVM,7
+forearm,xgboost,0.8134461886659243,XGBoost,1
+shin,xgboost,0.726526440434998,XGBoost,2
+waist,xgboost,0.7115023348144274,XGBoost,3
+upperarm,xgboost,0.6974311468409875,XGBoost,4
+chest,xgboost,0.695448412401587,XGBoost,5
+head,xgboost,0.6705746185510549,XGBoost,6
+thigh,xgboost,0.6430130298612211,XGBoost,7

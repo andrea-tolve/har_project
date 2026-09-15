@@ -1,0 +1,13 @@
+experiment,body_part_count,body_part_mode,body_part,model,baseline_macro_f1,context_macro_f1,context,delta_macro_f1,context_label,model_label
+standard,7,all_7,all_7,random_forest,0.824431740983958,0.836120850804141,all_context,0.011689109820183008,Baseline + all context,Random Forest
+standard,7,all_7,all_7,svm,0.8854940259704552,0.883568735049787,all_context,-0.0019252909206682878,Baseline + all context,SVM
+standard,7,all_7,all_7,xgboost,0.8305993176688333,0.841341891075651,all_context,0.010742573406817724,Baseline + all context,XGBoost
+standard,7,all_7,all_7,random_forest,0.824431740983958,0.816729903475086,gps,-0.007701837508871989,Baseline + GPS,Random Forest
+standard,7,all_7,all_7,svm,0.8854940259704552,0.8842476211591407,gps,-0.0012464048113145498,Baseline + GPS,SVM
+standard,7,all_7,all_7,xgboost,0.8305993176688333,0.8449374702818563,gps,0.014338152613022959,Baseline + GPS,XGBoost
+standard,7,all_7,all_7,random_forest,0.824431740983958,0.8264470852329414,light,0.0020153442489834195,Baseline + light,Random Forest
+standard,7,all_7,all_7,svm,0.8854940259704552,0.8772891573953362,light,-0.00820486857511904,Baseline + light,SVM
+standard,7,all_7,all_7,xgboost,0.8305993176688333,0.8246502119669867,light,-0.005949105701846591,Baseline + light,XGBoost
+standard,7,all_7,all_7,random_forest,0.824431740983958,0.8215078615161369,mic,-0.0029238794678211333,Baseline + microphone,Random Forest
+standard,7,all_7,all_7,svm,0.8854940259704552,0.887146613888547,mic,0.0016525879180917524,Baseline + microphone,SVM
+standard,7,all_7,all_7,xgboost,0.8305993176688333,0.8349803524660543,mic,0.004381034797220962,Baseline + microphone,XGBoost

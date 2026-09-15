@@ -1,0 +1,91 @@
+context,experiment,body_part_count,body_part_mode,model,macro_f1_mean,context_label,model_label
+all_context,first_2_parts_plus_all,2,progressive,random_forest,0.788755079821739,Baseline + all context,Random Forest
+all_context,first_3_parts_plus_all,3,progressive,random_forest,0.8125686913313601,Baseline + all context,Random Forest
+all_context,first_4_parts_plus_all,4,progressive,random_forest,0.8107025118131144,Baseline + all context,Random Forest
+all_context,first_5_parts_plus_all,5,progressive,random_forest,0.8263311739860975,Baseline + all context,Random Forest
+all_context,first_6_parts_plus_all,6,progressive,random_forest,0.8331717252905305,Baseline + all context,Random Forest
+all_context,standard,7,all_7,random_forest,0.836120850804141,Baseline + all context,Random Forest
+all_context,first_2_parts_plus_all,2,progressive,svm,0.801549971503946,Baseline + all context,SVM
+all_context,first_3_parts_plus_all,3,progressive,svm,0.804480889662191,Baseline + all context,SVM
+all_context,first_4_parts_plus_all,4,progressive,svm,0.8218430387292073,Baseline + all context,SVM
+all_context,first_5_parts_plus_all,5,progressive,svm,0.8823997316288923,Baseline + all context,SVM
+all_context,first_6_parts_plus_all,6,progressive,svm,0.8870938794277372,Baseline + all context,SVM
+all_context,standard,7,all_7,svm,0.883568735049787,Baseline + all context,SVM
+all_context,first_2_parts_plus_all,2,progressive,xgboost,0.7517054517950107,Baseline + all context,XGBoost
+all_context,first_3_parts_plus_all,3,progressive,xgboost,0.7674544373202322,Baseline + all context,XGBoost
+all_context,first_4_parts_plus_all,4,progressive,xgboost,0.7748526724033038,Baseline + all context,XGBoost
+all_context,first_5_parts_plus_all,5,progressive,xgboost,0.8472169485725772,Baseline + all context,XGBoost
+all_context,first_6_parts_plus_all,6,progressive,xgboost,0.8527850383453683,Baseline + all context,XGBoost
+all_context,standard,7,all_7,xgboost,0.841341891075651,Baseline + all context,XGBoost
+baseline,first_2_body_parts,2,progressive,random_forest,0.8043670189565185,Baseline,Random Forest
+baseline,first_3_body_parts,3,progressive,random_forest,0.8249208062999955,Baseline,Random Forest
+baseline,first_4_body_parts,4,progressive,random_forest,0.8172635183358671,Baseline,Random Forest
+baseline,first_5_body_parts,5,progressive,random_forest,0.8174957356084375,Baseline,Random Forest
+baseline,first_6_body_parts,6,progressive,random_forest,0.8142461987819197,Baseline,Random Forest
+baseline,standard,7,all_7,random_forest,0.824431740983958,Baseline,Random Forest
+baseline,first_2_body_parts,2,progressive,svm,0.801082584726799,Baseline,SVM
+baseline,first_3_body_parts,3,progressive,svm,0.8060351108738667,Baseline,SVM
+baseline,first_4_body_parts,4,progressive,svm,0.8348601557503902,Baseline,SVM
+baseline,first_5_body_parts,5,progressive,svm,0.8955108172042169,Baseline,SVM
+baseline,first_6_body_parts,6,progressive,svm,0.8912428916908534,Baseline,SVM
+baseline,standard,7,all_7,svm,0.8854940259704552,Baseline,SVM
+baseline,first_2_body_parts,2,progressive,xgboost,0.7957925945968738,Baseline,XGBoost
+baseline,first_3_body_parts,3,progressive,xgboost,0.7800278488153799,Baseline,XGBoost
+baseline,first_4_body_parts,4,progressive,xgboost,0.7918929448066182,Baseline,XGBoost
+baseline,first_5_body_parts,5,progressive,xgboost,0.8009975136343317,Baseline,XGBoost
+baseline,first_6_body_parts,6,progressive,xgboost,0.8218854630752156,Baseline,XGBoost
+baseline,standard,7,all_7,xgboost,0.8305993176688333,Baseline,XGBoost
+gps,first_2_parts_plus_gps,2,progressive,random_forest,0.783583509572039,Baseline + GPS,Random Forest
+gps,first_3_parts_plus_gps,3,progressive,random_forest,0.8064268886058711,Baseline + GPS,Random Forest
+gps,first_4_parts_plus_gps,4,progressive,random_forest,0.8028155110047609,Baseline + GPS,Random Forest
+gps,first_5_parts_plus_gps,5,progressive,random_forest,0.8203394579107186,Baseline + GPS,Random Forest
+gps,first_6_parts_plus_gps,6,progressive,random_forest,0.8382511011927093,Baseline + GPS,Random Forest
+gps,standard,7,all_7,random_forest,0.816729903475086,Baseline + GPS,Random Forest
+gps,first_2_parts_plus_gps,2,progressive,svm,0.7887951799545635,Baseline + GPS,SVM
+gps,first_3_parts_plus_gps,3,progressive,svm,0.8019435801893201,Baseline + GPS,SVM
+gps,first_4_parts_plus_gps,4,progressive,svm,0.8325009434107523,Baseline + GPS,SVM
+gps,first_5_parts_plus_gps,5,progressive,svm,0.8893702156925489,Baseline + GPS,SVM
+gps,first_6_parts_plus_gps,6,progressive,svm,0.8884673792822999,Baseline + GPS,SVM
+gps,standard,7,all_7,svm,0.8842476211591407,Baseline + GPS,SVM
+gps,first_2_parts_plus_gps,2,progressive,xgboost,0.7586040328020445,Baseline + GPS,XGBoost
+gps,first_3_parts_plus_gps,3,progressive,xgboost,0.7681575323790534,Baseline + GPS,XGBoost
+gps,first_4_parts_plus_gps,4,progressive,xgboost,0.7761321857758495,Baseline + GPS,XGBoost
+gps,first_5_parts_plus_gps,5,progressive,xgboost,0.8156093612838495,Baseline + GPS,XGBoost
+gps,first_6_parts_plus_gps,6,progressive,xgboost,0.8380037114446223,Baseline + GPS,XGBoost
+gps,standard,7,all_7,xgboost,0.8449374702818563,Baseline + GPS,XGBoost
+light,first_2_parts_plus_light,2,progressive,random_forest,0.7825889793083507,Baseline + light,Random Forest
+light,first_3_parts_plus_light,3,progressive,random_forest,0.819072202431393,Baseline + light,Random Forest
+light,first_4_parts_plus_light,4,progressive,random_forest,0.8098937240219113,Baseline + light,Random Forest
+light,first_5_parts_plus_light,5,progressive,random_forest,0.8092107747052377,Baseline + light,Random Forest
+light,first_6_parts_plus_light,6,progressive,random_forest,0.8187462115304388,Baseline + light,Random Forest
+light,standard,7,all_7,random_forest,0.8264470852329414,Baseline + light,Random Forest
+light,first_2_parts_plus_light,2,progressive,svm,0.8023838194428865,Baseline + light,SVM
+light,first_3_parts_plus_light,3,progressive,svm,0.8091252832336784,Baseline + light,SVM
+light,first_4_parts_plus_light,4,progressive,svm,0.8166321965025236,Baseline + light,SVM
+light,first_5_parts_plus_light,5,progressive,svm,0.8795203955970272,Baseline + light,SVM
+light,first_6_parts_plus_light,6,progressive,svm,0.878260282719405,Baseline + light,SVM
+light,standard,7,all_7,svm,0.8772891573953362,Baseline + light,SVM
+light,first_2_parts_plus_light,2,progressive,xgboost,0.7434942494249878,Baseline + light,XGBoost
+light,first_3_parts_plus_light,3,progressive,xgboost,0.7907931044987652,Baseline + light,XGBoost
+light,first_4_parts_plus_light,4,progressive,xgboost,0.7989154636726014,Baseline + light,XGBoost
+light,first_5_parts_plus_light,5,progressive,xgboost,0.8067920257765887,Baseline + light,XGBoost
+light,first_6_parts_plus_light,6,progressive,xgboost,0.8206133490388496,Baseline + light,XGBoost
+light,standard,7,all_7,xgboost,0.8246502119669867,Baseline + light,XGBoost
+mic,first_2_parts_plus_mic,2,progressive,random_forest,0.8204771950845656,Baseline + microphone,Random Forest
+mic,first_3_parts_plus_mic,3,progressive,random_forest,0.8164413797718061,Baseline + microphone,Random Forest
+mic,first_4_parts_plus_mic,4,progressive,random_forest,0.8164860394720495,Baseline + microphone,Random Forest
+mic,first_5_parts_plus_mic,5,progressive,random_forest,0.8214085050427412,Baseline + microphone,Random Forest
+mic,first_6_parts_plus_mic,6,progressive,random_forest,0.8252818810793267,Baseline + microphone,Random Forest
+mic,standard,7,all_7,random_forest,0.8215078615161369,Baseline + microphone,Random Forest
+mic,first_2_parts_plus_mic,2,progressive,svm,0.8023516947147857,Baseline + microphone,SVM
+mic,first_3_parts_plus_mic,3,progressive,svm,0.8087590388257475,Baseline + microphone,SVM
+mic,first_4_parts_plus_mic,4,progressive,svm,0.8350649238142658,Baseline + microphone,SVM
+mic,first_5_parts_plus_mic,5,progressive,svm,0.8969717523858735,Baseline + microphone,SVM
+mic,first_6_parts_plus_mic,6,progressive,svm,0.8936264039395015,Baseline + microphone,SVM
+mic,standard,7,all_7,svm,0.887146613888547,Baseline + microphone,SVM
+mic,first_2_parts_plus_mic,2,progressive,xgboost,0.7867554774442795,Baseline + microphone,XGBoost
+mic,first_3_parts_plus_mic,3,progressive,xgboost,0.7962120767048185,Baseline + microphone,XGBoost
+mic,first_4_parts_plus_mic,4,progressive,xgboost,0.7933001903313842,Baseline + microphone,XGBoost
+mic,first_5_parts_plus_mic,5,progressive,xgboost,0.8097502100925783,Baseline + microphone,XGBoost
+mic,first_6_parts_plus_mic,6,progressive,xgboost,0.8344534845585259,Baseline + microphone,XGBoost
+mic,standard,7,all_7,xgboost,0.8349803524660543,Baseline + microphone,XGBoost

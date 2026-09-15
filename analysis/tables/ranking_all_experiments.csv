@@ -1,0 +1,196 @@
+context,experiment,body_part_count,body_part_mode,body_part,model,macro_f1_mean,context_label,model_label,rank
+mic,first_5_parts_plus_mic,5,progressive,first_5,svm,0.8969717523858735,Baseline + microphone,SVM,1
+baseline,first_5_body_parts,5,progressive,first_5,svm,0.8955108172042169,Baseline,SVM,2
+mic,first_6_parts_plus_mic,6,progressive,first_6,svm,0.8936264039395015,Baseline + microphone,SVM,3
+baseline,first_6_body_parts,6,progressive,first_6,svm,0.8912428916908534,Baseline,SVM,4
+gps,first_5_parts_plus_gps,5,progressive,first_5,svm,0.8893702156925489,Baseline + GPS,SVM,5
+gps,first_6_parts_plus_gps,6,progressive,first_6,svm,0.8884673792822999,Baseline + GPS,SVM,6
+mic,standard,7,all_7,all_7,svm,0.887146613888547,Baseline + microphone,SVM,7
+all_context,first_6_parts_plus_all,6,progressive,first_6,svm,0.8870938794277372,Baseline + all context,SVM,8
+baseline,standard,7,all_7,all_7,svm,0.8854940259704552,Baseline,SVM,9
+gps,standard,7,all_7,all_7,svm,0.8842476211591407,Baseline + GPS,SVM,10
+all_context,standard,7,all_7,all_7,svm,0.883568735049787,Baseline + all context,SVM,11
+all_context,first_5_parts_plus_all,5,progressive,first_5,svm,0.8823997316288923,Baseline + all context,SVM,12
+light,first_5_parts_plus_light,5,progressive,first_5,svm,0.8795203955970272,Baseline + light,SVM,13
+light,first_6_parts_plus_light,6,progressive,first_6,svm,0.878260282719405,Baseline + light,SVM,14
+light,standard,7,all_7,all_7,svm,0.8772891573953362,Baseline + light,SVM,15
+all_context,first_6_parts_plus_all,6,progressive,first_6,xgboost,0.8527850383453683,Baseline + all context,XGBoost,16
+all_context,first_5_parts_plus_all,5,progressive,first_5,xgboost,0.8472169485725772,Baseline + all context,XGBoost,17
+gps,standard,7,all_7,all_7,xgboost,0.8449374702818563,Baseline + GPS,XGBoost,18
+all_context,standard,7,all_7,all_7,xgboost,0.841341891075651,Baseline + all context,XGBoost,19
+gps,first_6_parts_plus_gps,6,progressive,first_6,random_forest,0.8382511011927093,Baseline + GPS,Random Forest,20
+gps,first_6_parts_plus_gps,6,progressive,first_6,xgboost,0.8380037114446223,Baseline + GPS,XGBoost,21
+all_context,standard,7,all_7,all_7,random_forest,0.836120850804141,Baseline + all context,Random Forest,22
+mic,first_4_parts_plus_mic,4,progressive,first_4,svm,0.8350649238142658,Baseline + microphone,SVM,23
+mic,standard,7,all_7,all_7,xgboost,0.8349803524660543,Baseline + microphone,XGBoost,24
+baseline,first_4_body_parts,4,progressive,first_4,svm,0.8348601557503902,Baseline,SVM,25
+mic,first_6_parts_plus_mic,6,progressive,first_6,xgboost,0.8344534845585259,Baseline + microphone,XGBoost,26
+all_context,first_6_parts_plus_all,6,progressive,first_6,random_forest,0.8331717252905305,Baseline + all context,Random Forest,27
+gps,first_4_parts_plus_gps,4,progressive,first_4,svm,0.8325009434107523,Baseline + GPS,SVM,28
+baseline,standard,7,all_7,all_7,xgboost,0.8305993176688333,Baseline,XGBoost,29
+mic,only_forearm_plus_mic,1,single,forearm,svm,0.8278622384073644,Baseline + microphone,SVM,30
+light,standard,7,all_7,all_7,random_forest,0.8264470852329414,Baseline + light,Random Forest,31
+all_context,first_5_parts_plus_all,5,progressive,first_5,random_forest,0.8263311739860975,Baseline + all context,Random Forest,32
+mic,first_6_parts_plus_mic,6,progressive,first_6,random_forest,0.8252818810793267,Baseline + microphone,Random Forest,33
+baseline,first_3_body_parts,3,progressive,first_3,random_forest,0.8249208062999955,Baseline,Random Forest,34
+light,standard,7,all_7,all_7,xgboost,0.8246502119669867,Baseline + light,XGBoost,35
+baseline,standard,7,all_7,all_7,random_forest,0.824431740983958,Baseline,Random Forest,36
+light,only_forearm_plus_light,1,single,forearm,svm,0.8234855752093022,Baseline + light,SVM,37
+baseline,first_6_body_parts,6,progressive,first_6,xgboost,0.8218854630752156,Baseline,XGBoost,38
+all_context,first_4_parts_plus_all,4,progressive,first_4,svm,0.8218430387292073,Baseline + all context,SVM,39
+mic,standard,7,all_7,all_7,random_forest,0.8215078615161369,Baseline + microphone,Random Forest,40
+mic,first_5_parts_plus_mic,5,progressive,first_5,random_forest,0.8214085050427412,Baseline + microphone,Random Forest,41
+light,first_6_parts_plus_light,6,progressive,first_6,xgboost,0.8206133490388496,Baseline + light,XGBoost,42
+mic,first_2_parts_plus_mic,2,progressive,first_2,random_forest,0.8204771950845656,Baseline + microphone,Random Forest,43
+gps,first_5_parts_plus_gps,5,progressive,first_5,random_forest,0.8203394579107186,Baseline + GPS,Random Forest,44
+baseline,only_forearm,1,single,forearm,svm,0.8195835306055058,Baseline,SVM,45
+light,first_3_parts_plus_light,3,progressive,first_3,random_forest,0.819072202431393,Baseline + light,Random Forest,46
+light,first_6_parts_plus_light,6,progressive,first_6,random_forest,0.8187462115304388,Baseline + light,Random Forest,47
+baseline,first_5_body_parts,5,progressive,first_5,random_forest,0.8174957356084375,Baseline,Random Forest,48
+baseline,first_4_body_parts,4,progressive,first_4,random_forest,0.8172635183358671,Baseline,Random Forest,49
+gps,standard,7,all_7,all_7,random_forest,0.816729903475086,Baseline + GPS,Random Forest,50
+light,first_4_parts_plus_light,4,progressive,first_4,svm,0.8166321965025236,Baseline + light,SVM,51
+mic,first_4_parts_plus_mic,4,progressive,first_4,random_forest,0.8164860394720495,Baseline + microphone,Random Forest,52
+mic,first_3_parts_plus_mic,3,progressive,first_3,random_forest,0.8164413797718061,Baseline + microphone,Random Forest,53
+gps,first_5_parts_plus_gps,5,progressive,first_5,xgboost,0.8156093612838495,Baseline + GPS,XGBoost,54
+mic,only_forearm_plus_mic,1,single,forearm,random_forest,0.8146000041146826,Baseline + microphone,Random Forest,55
+baseline,first_6_body_parts,6,progressive,first_6,random_forest,0.8142461987819197,Baseline,Random Forest,56
+baseline,only_forearm,1,single,forearm,xgboost,0.8134461886659243,Baseline,XGBoost,57
+all_context,first_3_parts_plus_all,3,progressive,first_3,random_forest,0.8125686913313601,Baseline + all context,Random Forest,58
+all_context,first_4_parts_plus_all,4,progressive,first_4,random_forest,0.8107025118131144,Baseline + all context,Random Forest,59
+light,first_4_parts_plus_light,4,progressive,first_4,random_forest,0.8098937240219113,Baseline + light,Random Forest,60
+mic,first_5_parts_plus_mic,5,progressive,first_5,xgboost,0.8097502100925783,Baseline + microphone,XGBoost,61
+light,first_5_parts_plus_light,5,progressive,first_5,random_forest,0.8092107747052377,Baseline + light,Random Forest,62
+light,first_3_parts_plus_light,3,progressive,first_3,svm,0.8091252832336784,Baseline + light,SVM,63
+mic,first_3_parts_plus_mic,3,progressive,first_3,svm,0.8087590388257475,Baseline + microphone,SVM,64
+mic,only_forearm_plus_mic,1,single,forearm,xgboost,0.808655706058515,Baseline + microphone,XGBoost,65
+all_context,only_forearm_plus_all,1,single,forearm,random_forest,0.8078214585888309,Baseline + all context,Random Forest,66
+light,first_5_parts_plus_light,5,progressive,first_5,xgboost,0.8067920257765887,Baseline + light,XGBoost,67
+gps,first_3_parts_plus_gps,3,progressive,first_3,random_forest,0.8064268886058711,Baseline + GPS,Random Forest,68
+baseline,only_forearm,1,single,forearm,random_forest,0.8061700386859427,Baseline,Random Forest,69
+baseline,first_3_body_parts,3,progressive,first_3,svm,0.8060351108738667,Baseline,SVM,70
+all_context,first_3_parts_plus_all,3,progressive,first_3,svm,0.804480889662191,Baseline + all context,SVM,71
+baseline,first_2_body_parts,2,progressive,first_2,random_forest,0.8043670189565185,Baseline,Random Forest,72
+gps,first_4_parts_plus_gps,4,progressive,first_4,random_forest,0.8028155110047609,Baseline + GPS,Random Forest,73
+light,first_2_parts_plus_light,2,progressive,first_2,svm,0.8023838194428865,Baseline + light,SVM,74
+mic,first_2_parts_plus_mic,2,progressive,first_2,svm,0.8023516947147857,Baseline + microphone,SVM,75
+gps,first_3_parts_plus_gps,3,progressive,first_3,svm,0.8019435801893201,Baseline + GPS,SVM,76
+all_context,only_forearm_plus_all,1,single,forearm,svm,0.8017145713068693,Baseline + all context,SVM,77
+all_context,first_2_parts_plus_all,2,progressive,first_2,svm,0.801549971503946,Baseline + all context,SVM,78
+baseline,first_2_body_parts,2,progressive,first_2,svm,0.801082584726799,Baseline,SVM,79
+baseline,first_5_body_parts,5,progressive,first_5,xgboost,0.8009975136343317,Baseline,XGBoost,80
+light,first_4_parts_plus_light,4,progressive,first_4,xgboost,0.7989154636726014,Baseline + light,XGBoost,81
+light,only_forearm_plus_light,1,single,forearm,random_forest,0.7975716067491037,Baseline + light,Random Forest,82
+mic,first_3_parts_plus_mic,3,progressive,first_3,xgboost,0.7962120767048185,Baseline + microphone,XGBoost,83
+baseline,first_2_body_parts,2,progressive,first_2,xgboost,0.7957925945968738,Baseline,XGBoost,84
+gps,only_forearm_plus_gps,1,single,forearm,random_forest,0.7950226996297717,Baseline + GPS,Random Forest,85
+mic,first_4_parts_plus_mic,4,progressive,first_4,xgboost,0.7933001903313842,Baseline + microphone,XGBoost,86
+baseline,first_4_body_parts,4,progressive,first_4,xgboost,0.7918929448066182,Baseline,XGBoost,87
+light,first_3_parts_plus_light,3,progressive,first_3,xgboost,0.7907931044987652,Baseline + light,XGBoost,88
+gps,first_2_parts_plus_gps,2,progressive,first_2,svm,0.7887951799545635,Baseline + GPS,SVM,89
+all_context,first_2_parts_plus_all,2,progressive,first_2,random_forest,0.788755079821739,Baseline + all context,Random Forest,90
+mic,first_2_parts_plus_mic,2,progressive,first_2,xgboost,0.7867554774442795,Baseline + microphone,XGBoost,91
+gps,first_2_parts_plus_gps,2,progressive,first_2,random_forest,0.783583509572039,Baseline + GPS,Random Forest,92
+light,first_2_parts_plus_light,2,progressive,first_2,random_forest,0.7825889793083507,Baseline + light,Random Forest,93
+baseline,first_3_body_parts,3,progressive,first_3,xgboost,0.7800278488153799,Baseline,XGBoost,94
+gps,first_4_parts_plus_gps,4,progressive,first_4,xgboost,0.7761321857758495,Baseline + GPS,XGBoost,95
+all_context,first_4_parts_plus_all,4,progressive,first_4,xgboost,0.7748526724033038,Baseline + all context,XGBoost,96
+gps,only_forearm_plus_gps,1,single,forearm,svm,0.7711550425912449,Baseline + GPS,SVM,97
+light,only_shin_plus_light,1,single,shin,svm,0.7686526419457439,Baseline + light,SVM,98
+gps,first_3_parts_plus_gps,3,progressive,first_3,xgboost,0.7681575323790534,Baseline + GPS,XGBoost,99
+baseline,only_shin,1,single,shin,random_forest,0.7674855518212964,Baseline,Random Forest,100
+all_context,first_3_parts_plus_all,3,progressive,first_3,xgboost,0.7674544373202322,Baseline + all context,XGBoost,101
+mic,only_shin_plus_mic,1,single,shin,random_forest,0.7654432263245091,Baseline + microphone,Random Forest,102
+gps,only_forearm_plus_gps,1,single,forearm,xgboost,0.7634391892431879,Baseline + GPS,XGBoost,103
+gps,only_shin_plus_gps,1,single,shin,random_forest,0.7611725787178962,Baseline + GPS,Random Forest,104
+mic,only_shin_plus_mic,1,single,shin,svm,0.7587082034944838,Baseline + microphone,SVM,105
+gps,first_2_parts_plus_gps,2,progressive,first_2,xgboost,0.7586040328020445,Baseline + GPS,XGBoost,106
+baseline,only_shin,1,single,shin,svm,0.7558751066736671,Baseline,SVM,107
+mic,only_waist_plus_mic,1,single,waist,svm,0.7557384034643863,Baseline + microphone,SVM,108
+light,only_forearm_plus_light,1,single,forearm,xgboost,0.7554607804617689,Baseline + light,XGBoost,109
+all_context,only_shin_plus_all,1,single,shin,random_forest,0.752028312780219,Baseline + all context,Random Forest,110
+all_context,first_2_parts_plus_all,2,progressive,first_2,xgboost,0.7517054517950107,Baseline + all context,XGBoost,111
+mic,only_shin_plus_mic,1,single,shin,xgboost,0.750682975517687,Baseline + microphone,XGBoost,112
+light,only_waist_plus_light,1,single,waist,svm,0.7450270283376539,Baseline + light,SVM,113
+light,only_upperarm_plus_light,1,single,upperarm,random_forest,0.7435777367283557,Baseline + light,Random Forest,114
+light,first_2_parts_plus_light,2,progressive,first_2,xgboost,0.7434942494249878,Baseline + light,XGBoost,115
+light,only_shin_plus_light,1,single,shin,random_forest,0.74182192264538,Baseline + light,Random Forest,116
+light,only_head_plus_light,1,single,head,random_forest,0.7407253668924035,Baseline + light,Random Forest,117
+mic,only_upperarm_plus_mic,1,single,upperarm,random_forest,0.7389348751306178,Baseline + microphone,Random Forest,118
+all_context,only_forearm_plus_all,1,single,forearm,xgboost,0.7377345872402273,Baseline + all context,XGBoost,119
+light,only_upperarm_plus_light,1,single,upperarm,xgboost,0.7337307392737947,Baseline + light,XGBoost,120
+baseline,only_waist,1,single,waist,svm,0.7318135756893824,Baseline,SVM,121
+light,only_upperarm_plus_light,1,single,upperarm,svm,0.7314020878362801,Baseline + light,SVM,122
+all_context,only_upperarm_plus_all,1,single,upperarm,random_forest,0.7309332100533577,Baseline + all context,Random Forest,123
+baseline,only_shin,1,single,shin,xgboost,0.726526440434998,Baseline,XGBoost,124
+all_context,only_shin_plus_all,1,single,shin,svm,0.7262713820689746,Baseline + all context,SVM,125
+baseline,only_upperarm,1,single,upperarm,random_forest,0.7255111747163693,Baseline,Random Forest,126
+all_context,only_upperarm_plus_all,1,single,upperarm,svm,0.7241650385131112,Baseline + all context,SVM,127
+mic,only_waist_plus_mic,1,single,waist,random_forest,0.7199667176963574,Baseline + microphone,Random Forest,128
+mic,only_waist_plus_mic,1,single,waist,xgboost,0.7187122534810958,Baseline + microphone,XGBoost,129
+baseline,only_upperarm,1,single,upperarm,svm,0.7184422634225888,Baseline,SVM,130
+gps,only_upperarm_plus_gps,1,single,upperarm,random_forest,0.7183166347810369,Baseline + GPS,Random Forest,131
+mic,only_upperarm_plus_mic,1,single,upperarm,xgboost,0.7174431218006699,Baseline + microphone,XGBoost,132
+mic,only_upperarm_plus_mic,1,single,upperarm,svm,0.7167406904442373,Baseline + microphone,SVM,133
+gps,only_shin_plus_gps,1,single,shin,xgboost,0.715860684281481,Baseline + GPS,XGBoost,134
+all_context,only_waist_plus_all,1,single,waist,random_forest,0.7154366392586379,Baseline + all context,Random Forest,135
+mic,only_chest_plus_mic,1,single,chest,svm,0.7139788846279398,Baseline + microphone,SVM,136
+all_context,only_thigh_plus_all,1,single,thigh,xgboost,0.712024321986673,Baseline + all context,XGBoost,137
+gps,only_waist_plus_gps,1,single,waist,xgboost,0.7119729181146012,Baseline + GPS,XGBoost,138
+baseline,only_chest,1,single,chest,svm,0.7115827429561761,Baseline,SVM,139
+baseline,only_waist,1,single,waist,xgboost,0.7115023348144274,Baseline,XGBoost,140
+all_context,only_waist_plus_all,1,single,waist,svm,0.7112906409822212,Baseline + all context,SVM,141
+gps,only_thigh_plus_gps,1,single,thigh,random_forest,0.7104928684410702,Baseline + GPS,Random Forest,142
+gps,only_waist_plus_gps,1,single,waist,svm,0.710492085801442,Baseline + GPS,SVM,143
+gps,only_upperarm_plus_gps,1,single,upperarm,svm,0.7102580294844679,Baseline + GPS,SVM,144
+all_context,only_waist_plus_all,1,single,waist,xgboost,0.7089905583960429,Baseline + all context,XGBoost,145
+mic,only_chest_plus_mic,1,single,chest,xgboost,0.7069935734666203,Baseline + microphone,XGBoost,146
+gps,only_chest_plus_gps,1,single,chest,random_forest,0.7069286458172024,Baseline + GPS,Random Forest,147
+mic,only_chest_plus_mic,1,single,chest,random_forest,0.7066855336780363,Baseline + microphone,Random Forest,148
+baseline,only_waist,1,single,waist,random_forest,0.7062719619362794,Baseline,Random Forest,149
+gps,only_shin_plus_gps,1,single,shin,svm,0.7059673739729124,Baseline + GPS,SVM,150
+light,only_head_plus_light,1,single,head,xgboost,0.705850893126731,Baseline + light,XGBoost,151
+all_context,only_head_plus_all,1,single,head,random_forest,0.7054988666804479,Baseline + all context,Random Forest,152
+all_context,only_thigh_plus_all,1,single,thigh,random_forest,0.7031254310570847,Baseline + all context,Random Forest,153
+light,only_chest_plus_light,1,single,chest,random_forest,0.700792515560877,Baseline + light,Random Forest,154
+light,only_waist_plus_light,1,single,waist,random_forest,0.7000023734686665,Baseline + light,Random Forest,155
+all_context,only_upperarm_plus_all,1,single,upperarm,xgboost,0.6989344483898564,Baseline + all context,XGBoost,156
+all_context,only_chest_plus_all,1,single,chest,random_forest,0.6987470677995451,Baseline + all context,Random Forest,157
+light,only_waist_plus_light,1,single,waist,xgboost,0.6980380219788198,Baseline + light,XGBoost,158
+baseline,only_upperarm,1,single,upperarm,xgboost,0.6974311468409875,Baseline,XGBoost,159
+light,only_shin_plus_light,1,single,shin,xgboost,0.6962427111882505,Baseline + light,XGBoost,160
+baseline,only_chest,1,single,chest,xgboost,0.695448412401587,Baseline,XGBoost,161
+all_context,only_chest_plus_all,1,single,chest,svm,0.6952589243784815,Baseline + all context,SVM,162
+gps,only_waist_plus_gps,1,single,waist,random_forest,0.6940167804502415,Baseline + GPS,Random Forest,163
+baseline,only_head,1,single,head,random_forest,0.6932023176288078,Baseline,Random Forest,164
+gps,only_upperarm_plus_gps,1,single,upperarm,xgboost,0.6913654299195998,Baseline + GPS,XGBoost,165
+baseline,only_chest,1,single,chest,random_forest,0.6912001987630754,Baseline,Random Forest,166
+all_context,only_shin_plus_all,1,single,shin,xgboost,0.6901936470013424,Baseline + all context,XGBoost,167
+light,only_chest_plus_light,1,single,chest,svm,0.6897150052650746,Baseline + light,SVM,168
+gps,only_thigh_plus_gps,1,single,thigh,xgboost,0.686032448523471,Baseline + GPS,XGBoost,169
+gps,only_chest_plus_gps,1,single,chest,xgboost,0.6856558194036924,Baseline + GPS,XGBoost,170
+mic,only_head_plus_mic,1,single,head,random_forest,0.6846084672365073,Baseline + microphone,Random Forest,171
+all_context,only_head_plus_all,1,single,head,xgboost,0.6838121976873003,Baseline + all context,XGBoost,172
+all_context,only_thigh_plus_all,1,single,thigh,svm,0.6802220533999489,Baseline + all context,SVM,173
+mic,only_head_plus_mic,1,single,head,xgboost,0.6798156682677778,Baseline + microphone,XGBoost,174
+light,only_thigh_plus_light,1,single,thigh,xgboost,0.6783459228087941,Baseline + light,XGBoost,175
+baseline,only_thigh,1,single,thigh,svm,0.6737373101409522,Baseline,SVM,176
+baseline,only_thigh,1,single,thigh,random_forest,0.6730502210221231,Baseline,Random Forest,177
+mic,only_thigh_plus_mic,1,single,thigh,random_forest,0.6727674310919035,Baseline + microphone,Random Forest,178
+gps,only_chest_plus_gps,1,single,chest,svm,0.6721097115151536,Baseline + GPS,SVM,179
+baseline,only_head,1,single,head,xgboost,0.6705746185510549,Baseline,XGBoost,180
+mic,only_thigh_plus_mic,1,single,thigh,svm,0.670518139507839,Baseline + microphone,SVM,181
+gps,only_head_plus_gps,1,single,head,random_forest,0.6695681126578447,Baseline + GPS,Random Forest,182
+gps,only_thigh_plus_gps,1,single,thigh,svm,0.6692864954790452,Baseline + GPS,SVM,183
+mic,only_head_plus_mic,1,single,head,svm,0.6680111475996491,Baseline + microphone,SVM,184
+mic,only_thigh_plus_mic,1,single,thigh,xgboost,0.664458285912256,Baseline + microphone,XGBoost,185
+all_context,only_chest_plus_all,1,single,chest,xgboost,0.6617920912765388,Baseline + all context,XGBoost,186
+light,only_thigh_plus_light,1,single,thigh,random_forest,0.6609155764824111,Baseline + light,Random Forest,187
+baseline,only_head,1,single,head,svm,0.6574487159934134,Baseline,SVM,188
+light,only_thigh_plus_light,1,single,thigh,svm,0.6560476661778221,Baseline + light,SVM,189
+gps,only_head_plus_gps,1,single,head,xgboost,0.6559380658726119,Baseline + GPS,XGBoost,190
+light,only_chest_plus_light,1,single,chest,xgboost,0.6493837659543528,Baseline + light,XGBoost,191
+baseline,only_thigh,1,single,thigh,xgboost,0.6430130298612211,Baseline,XGBoost,192
+light,only_head_plus_light,1,single,head,svm,0.640165393871279,Baseline + light,SVM,193
+gps,only_head_plus_gps,1,single,head,svm,0.6380007753831769,Baseline + GPS,SVM,194
+all_context,only_head_plus_all,1,single,head,svm,0.6230195235370083,Baseline + all context,SVM,195

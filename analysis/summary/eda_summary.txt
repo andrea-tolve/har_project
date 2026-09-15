@@ -1,0 +1,17 @@
+Exploratory Data Analysis summary
+=================================
+
+The primary metric is mean macro F1, which gives equal weight to all activities.
+The seven-body-part experiments are the reference; reduced-body-part experiments
+are compared at equal body-part counts whenever the same experiment exists.
+
+Best seven-body-part result: SVM / Baseline + microphone (macro F1=0.887).
+Random Forest: all context minus baseline = +0.012 macro F1.
+SVM: all context minus baseline = -0.002 macro F1.
+XGBoost: all context minus baseline = +0.011 macro F1.
+
+Context gains at equal body-part counts:
+  Baseline + all context: mean +0.007, median +0.011.
+  Baseline + GPS: mean +0.002, median -0.001.
+  Baseline + light: mean -0.004, median -0.006.
+  Baseline + microphone: mean +0.001, median +0.002.
